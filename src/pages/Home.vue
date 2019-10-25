@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav>
+  <div style="margin-bottom:120px">
+    <header>
       <ul>
         <li>
           <img src="/assets/images/Company Page/logo-pink.png" alt='Logo' />
@@ -31,7 +31,7 @@
           <fa-icon icon="angle-down"></fa-icon>
         </li>
       </ul>
-    </nav>
+    </header>
     <div class="location">
       <span>home</span>
       <span>/</span>
@@ -100,7 +100,6 @@ export default {
     navigation(route) {
       this.$router.push(route);
       this.sidebarItems.forEach(el => {
-        console.log(el)
         if (el.route == route) {
           el.isActive = true;
         } else {
@@ -146,6 +145,7 @@ input[type='text']::placeholder {
   height: 100%;
   display: flex;
   .sidebar {
+    cursor: pointer;
     flex: 2;
     ul {
       list-style: none;

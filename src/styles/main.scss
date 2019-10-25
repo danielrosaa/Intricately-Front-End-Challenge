@@ -8,7 +8,7 @@ body {
     background-color: #E7E9F3;
 }
 
-nav {
+header {
     background-color: $nav;
     height: $navHeight;
     width: 100%;
@@ -73,10 +73,11 @@ nav {
     }
 }
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     font-size: 0.75rem;
     height: 120px;
+    width: 100%;
     background-color: #FFF;
     display: flex;
     align-items: center;
