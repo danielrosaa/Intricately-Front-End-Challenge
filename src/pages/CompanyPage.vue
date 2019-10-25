@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page">
         <div class="header">
             <img src="./../Images/Company Page/squares.png" alt="Microsoft Logo">
             <div class="title">
@@ -56,6 +56,9 @@ export default {
                 { id: 8, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
             ]
         }
+    },
+    beforeCreate() {
+        document.body.className = 'company-page';
     }
 }
 </script>

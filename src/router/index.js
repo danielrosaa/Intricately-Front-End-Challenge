@@ -7,8 +7,9 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes: [
-      { path: '/', name: 'Home', component: CompanyPage },
-      { path: '/companydata', name: 'Company Data', component: CompanyData }
+      { path: '/', name: 'Company Page', component: CompanyPage },
+      { path: '/companydata', name: 'Company Data', component: CompanyData },
+      { path: '/table', name: 'Table', template: '<h2>Table</h2>' },
     ]
   })
 

@@ -4,8 +4,16 @@
 body {
     padding: 0; margin: 0;
     font-size: 22px;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
+}
+.company-page {
     background-color: #E7E9F3;
+}
+.company-data {
+    background-color: #FFF;
+    &.footer-bg {
+        background-color: #F3F3f3;
+    }
 }
 
 header {

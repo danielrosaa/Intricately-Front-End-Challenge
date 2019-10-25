@@ -35,7 +35,7 @@
     <div class="location">
       <span>home</span>
       <span>/</span>
-      <span>company page</span>
+      <span>{{$route.name}}</span>
       </div>
     <div class="content">
       <aside class="sidebar">
@@ -80,7 +80,7 @@ export default {
       isActive: false,
       sidebarItems: [
         {name: 'COMPANY DATA', route: '/companydata', isActive: false},
-        {name: 'COMPANY TABLE', route: '', isActive: false},
+        {name: 'COMPANY TABLE', route: '/table', isActive: false},
         {name: 'COMPANY PAGE', route: '/', isActive: true}
       ],
       footerLinks: [
@@ -110,7 +110,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 @import './../styles/variables';
 

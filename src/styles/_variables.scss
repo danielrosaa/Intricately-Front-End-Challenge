@@ -2,3 +2,4 @@ $nav: #394783;
 $navLight: lighten($color: $nav, $amount: 20);
 $navDark: darken($color: $nav, $amount: 20);
 $navHeight: 65px;
+$borderColorLight: lighten($color: $navLight, $amount: 30);
