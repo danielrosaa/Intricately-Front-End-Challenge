@@ -12,7 +12,7 @@
         </div>
         <div class="content">
             <div class="content-left">
-                <div>ACTIVITIES</div>
+                <div class="tile-title">ACTIVITIES</div>
                 <activities v-for="activity in activityList" 
                     :key="activity.id"
                     :date="activity.date"
@@ -20,7 +20,22 @@
                     :text="activity.text" />
             </div>
             <div class="content-right">
-                <div>SIMILAR COMPANIES</div>
+                <div class="tile-title">SIMILAR COMPANIES</div>
+                <div class="content-right-content">
+                    <div>Content</div>
+                    <div>Another content</div>
+                </div>
+                <div class="tile-title">COMPANY SPEND HISTORY</div>
+                <div class="content-right-content">
+                    <div>Content</div>
+                    <div>Another content</div>
+                    <div>One more</div>
+                </div>
+                <div class="tile-title">COMPANY SPEND HISTORY</div>
+                <div class="content-right-content">
+                    <div>Content</div>
+                    <div>Another content</div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,12 +46,14 @@ export default {
     data() {
         return {
             activityList: [
-                { id: 1, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 2, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 3, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 4, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 5, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 6, date: '8 days ago', icon: 'Images/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 1, date: '8 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 2, date: '10 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 3, date: '20 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 4, date: '25 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 5, date: '28 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 6, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 7, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+                { id: 8, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
             ]
         }
     }
@@ -75,19 +92,58 @@ export default {
 
 .content {
     display: flex;
+    .tile-title {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        max-height: 47px;
+        padding: 15px;
+        background-color: #FFF;
+    }
     .content-left, .content-right {
         width: 80%;
-        background-color: #FFF;
         flex: 1;
         border-radius: 5px;
-        border: 1px solid lighten($color: $navLight, $amount: 30);
         div {
-            padding: 25px 10px;
+            border: 1px solid lighten($color: $navLight, $amount: 30);
+            // padding: 25px 10px;
             font-size: 0.8rem;
+            &:first-child {
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
         }
     }
     .content-left {
         margin-right: 20px;
+    }
+    .content-right {
+        background-color: transparent;
+        // display: grid;
+        // div:not(.content-right-content) {
+        //     border-top-left-radius: 6px;
+        //     border-top-right-radius: 6px;
+        // }
+        .content-right-content {
+            background-color: #FFF;
+            border-top: 0;
+            padding: 0;
+            div {
+                border: 0;
+                padding: 20px;
+                &:nth-child(1) {
+                    background-color: lightcyan;
+                }
+                &:nth-child(2) {
+                    background-color: lightgoldenrodyellow;
+                }
+                &:nth-child(3) {
+                    background-color: lightpink;
+                }
+            }
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
     }
 }
 </style>
