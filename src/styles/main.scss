@@ -11,7 +11,7 @@ body {
 nav {
     background-color: $nav;
     height: $navHeight;
-    width: 100vw;
+    width: 100%;
     color: #FFF;
     display: flex;
     img {
@@ -68,6 +68,43 @@ nav {
                 svg {
                     margin-left: 5px;
                 }
+            }
+        }
+    }
+}
+footer {
+    position: relative;
+    bottom: 0;
+    font-size: 0.75rem;
+    height: 120px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    div.footer-content {
+        margin: 0 auto;
+        width: 70%;
+        .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            ul {
+                padding: 0;
+                list-style: none;
+                li {
+                    cursor: pointer;
+                    color: $navLight;
+                    display: inline-flex;
+                    &:not(:last-child)::after {
+                        content: '|';
+                        margin: 0 8px;
+                    }
+                }
+            }
+            &:last-child {
+                color: #999;
+            }
+            img:not(:last-child) {
+                margin-right: 13px;
             }
         }
     }
