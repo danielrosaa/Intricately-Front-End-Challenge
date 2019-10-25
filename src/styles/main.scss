@@ -1,1 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
+$nav: #394783;
+
+body {
+    padding: 0; margin: 0;
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    background-color: $nav;
+    height: 65px;
+    width: 100vw;
+    color: #FFF;
+    display: flex;
+    img {
+        vertical-align: middle;
+    }
+    svg {
+        cursor: pointer;
+        color: lighten($color: $nav, $amount: 20);
+    }
+    ul {
+        width: 100%;
+        padding: 0 20px;
+        display: inline-flex;
+        align-items: center;
+        list-style: none;
+        li {
+            font-size: 0.8rem;
+            &:first-child {
+                flex: 1;
+            }
+            &:nth-child(2) {
+                flex: 10;
+                display: inline-flex;
+                align-items: center;
+            }
+            &:last-child {
+                flex: 2;
+                text-align: right;
+            }
+            input[type="text"] {
+                height: 30px;
+                border-radius: 3px;
+                padding: 5px 10px;
+                color: #FFF;
+                border: 0;
+                background-color: darken($color: $nav, $amount: 20);
+            }
+            .nav-list {
+                margin: 0 20px;
+                cursor: pointer;
+                height: 30px;
+                width: auto;
+                border-radius: 3px;
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                transition: all 300ms;
+                &:hover {
+                    background-color: lighten($color: $nav, $amount: 20);
+                    svg {
+                        color: $nav;
+                    }
+                }
+                svg {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
