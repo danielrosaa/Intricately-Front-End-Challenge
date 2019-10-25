@@ -40,7 +40,7 @@
     <div class="content">
       <aside class="sidebar">
         <ul>
-          <li v-for="item in sidebarItems" :key="item.name"><router-link tag="a" :to="item.route">{{item.name}}</router-link></li>
+          <li v-for="item in sidebarItems" :key="item.name" @click="navigation(item.route)" :class="item.isActive ? 'router-link-active' : ''">{{item.name}}</li>
         </ul>
       </aside>
 
@@ -77,10 +77,11 @@ export default {
   data() {
     return {
       searchValue: '',
+      isActive: false,
       sidebarItems: [
-        {name: 'COMPANY DATA', route: '/companydata'},
-        {name: 'COMPANY TABLE', route: ''},
-        {name: 'COMPANY PAGE', route: '/companypage'}
+        {name: 'COMPANY DATA', route: '/companydata', isActive: false},
+        {name: 'COMPANY TABLE', route: '', isActive: false},
+        {name: 'COMPANY PAGE', route: '/', isActive: true}
       ],
       footerLinks: [
         {name: 'Pricing'},
@@ -93,6 +94,19 @@ export default {
         {name: 'Terms and Conditions'},
         {name: 'Privacy Policy'},
       ]
+    }
+  },
+  methods: {
+    navigation(route) {
+      this.$router.push(route);
+      this.sidebarItems.forEach(el => {
+        console.log(el)
+        if (el.route == route) {
+          el.isActive = true;
+        } else {
+          el.isActive = false;
+        }
+      })
     }
   }
 };
@@ -158,5 +172,9 @@ input[type='text']::placeholder {
     padding-top: 0;
     flex: 8;
   }
+}
+
+.router-link-active {
+  border-left: 2px solid $nav !important;
 }
 </style>

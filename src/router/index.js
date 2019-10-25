@@ -7,8 +7,8 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes: [
-      { path: '/', component: CompanyPage },
-      { path: '/companydata', component: CompanyData }
+      { path: '/', name: 'Home', component: CompanyPage },
+      { path: '/companydata', name: 'Company Data', component: CompanyData }
     ]
   })
 
