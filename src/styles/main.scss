@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
-$nav: #394783;
+@import './variables';
 
 body {
     padding: 0; margin: 0;
     font-size: 22px;
     font-family: 'Roboto', sans-serif;
+    background-color: #E7E9F3;
 }
 
 nav {
     background-color: $nav;
-    height: 65px;
+    height: $navHeight;
     width: 100vw;
     color: #FFF;
     display: flex;
@@ -22,7 +22,7 @@ nav {
         color: lighten($color: $nav, $amount: 20);
     }
     ul {
-        width: 100%;
+        width: 100vw;
         padding: 0 20px;
         display: inline-flex;
         align-items: center;
@@ -42,7 +42,7 @@ nav {
                 text-align: right;
             }
             input[type="text"] {
-                height: 30px;
+                height: calc(#{$navHeight} - 35px);
                 border-radius: 3px;
                 padding: 5px 10px;
                 color: #FFF;
@@ -52,7 +52,7 @@ nav {
             .nav-list {
                 margin: 0 20px;
                 cursor: pointer;
-                height: 30px;
+                height: calc(#{$navHeight} - 35px);
                 width: auto;
                 border-radius: 3px;
                 padding: 5px 10px;

@@ -1,17 +1,25 @@
 import 'Styles/main.scss';
 import Vue from 'vue';
-import Home from 'Components/Home.vue';
+import router from 'Router/index';
+import Home from 'Pages/Home.vue';
+
 
 /** Font Awesome */
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch as faSearchSolid, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch as faSearchSolid, faAngleDown, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faSearchSolid, faAngleDown)
-Vue.component('FaIcon', FontAwesomeIcon)
+library.add(faSearchSolid, faAngleDown, faMapMarkerAlt);
+Vue.component('FaIcon', FontAwesomeIcon);
 /** End Font Awesome */
+
+/** Components */
+import Activities from 'Components/Activities.vue';
+Vue.component('Activities', Activities);
+/** End Components */
 
 new Vue({
   render: createElement => createElement(Home),
-  el: '#app'
-});
+  el: '#app',
+  router
+})
