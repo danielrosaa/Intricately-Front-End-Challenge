@@ -15,6 +15,10 @@ Vue.component('FaIcon', FontAwesomeIcon);
 /** Components */
 import Activities from 'Components/Activities.vue';
 Vue.component('Activities', Activities);
+import Header from 'Components/Header.vue';
+Vue.component('appHeader', Header);
+import Footer from 'Components/Footer.vue';
+Vue.component('appFooter', Footer);
 
 Vue.use(Vuelidate)
 new Vue({
