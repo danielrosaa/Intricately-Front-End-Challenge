@@ -8,6 +8,9 @@ body {
 }
 .company-page {
     background-color: #E7E9F3;
+    &.footer-bg {
+        background-color: #FFF;
+    }
 }
 .company-data {
     background-color: #FFF;

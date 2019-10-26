@@ -42,23 +42,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-    data() {
-        return {
-            activityList: [
-                { id: 1, date: '8 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 2, date: '10 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 3, date: '20 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 4, date: '25 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 5, date: '28 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 6, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 7, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-                { id: 8, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            ]
-        }
+    computed: {
+        ...mapGetters(['activityList'])
     },
     beforeCreate() {
-        document.body.className = 'company-page';
+        document.getElementsByTagName('body')[0].className = 'company-page';
+        document.getElementsByTagName('footer')[0].className = 'company-page footer-bg';
     }
 }
 </script>

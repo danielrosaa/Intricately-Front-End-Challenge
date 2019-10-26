@@ -73,28 +73,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
       searchValue: '',
-      isActive: false,
-      sidebarItems: [
-        {name: 'COMPANY DATA', route: '/companydata', isActive: false},
-        {name: 'COMPANY TABLE', route: '/table', isActive: false},
-        {name: 'COMPANY PAGE', route: '/', isActive: true}
-      ],
-      footerLinks: [
-        {name: 'Pricing'},
-        {name: 'Blog'},
-        {name: 'Webinars'},
-        {name: 'Events'},
-        {name: 'Help Center'},
-      ],
-      legalInfos: [
-        {name: 'Terms and Conditions'},
-        {name: 'Privacy Policy'},
-      ]
+      isActive: false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'sidebarItems',
+      'footerLinks',
+      'legalInfos',
+      ])
   },
   methods: {
     navigation(route) {

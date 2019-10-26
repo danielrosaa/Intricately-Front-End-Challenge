@@ -32,7 +32,7 @@ export default {
         border-bottom-right-radius: 6px;
     }
     .date {
-        flex: 2;
+        flex: 3;
         color: #999;
         font-size: 0.8rem;
     }
@@ -43,7 +43,7 @@ export default {
         }
     }
     .text {
-        flex: 7;
+        flex: 8;
     }
 }
 </style>

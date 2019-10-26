@@ -13,15 +13,35 @@
             <input type="text" name="ciaSpenAbility" id="ciaSpenAbility" placeholder="e.g. $150,000 - $300,000">
 
             <label for="ciaName">NOTES</label>
-            <textarea name="ciaName" id="ciaName" placeholder="e.g. Good Tech Company"></textarea>
+            <textarea @click="showModal = !showModal" v-model="notes" name="ciaName" id="ciaName" placeholder="e.g. Good Tech Company" readonly></textarea>
+            <div v-if="showModal" class="modal">
+                <div class="modal-box">
+                    <div class="modal-title">
+                        ADITIONAL NOTES
+                        <span 
+                            @click="showModal = false; notes == '' ? aditionalNotes = '' : aditionalNotes = notes">X</span>
+                    </div>
+                    <textarea autofocus class="aditional-notes" name="aditionalNotes" id="aditionalNotes" v-model="aditionalNotes"></textarea>
+                    <div class="submit">
+                        <button @click.prevent="notes = aditionalNotes; showModal = false">SAVE</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            notes: '',
+            aditionalNotes: '',
+            showModal: false
+        }
+    },
     beforeCreate() {
-        document.body.className = 'company-data';
+        document.getElementsByTagName('body')[0].className = 'company-data';
         document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
     }
 }
@@ -38,6 +58,58 @@ export default {
     margin-bottom: 20px;
     font-size: 1rem;
     line-height: 25px;
+}
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-box {
+        min-width: 400px;
+        width: auto;
+        background-color: #FFF;
+        padding: 20px 30px;
+        box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
+        display: grid;
+    }
+    .modal-title, .aditional-notes {
+        margin-bottom: 20px;
+    }
+    .modal-title {
+        font-size: 0.7rem;
+        color: #999;
+        span {
+            cursor: pointer;
+            float: right;
+            &:hover {
+                font-weight: 700;
+            }
+        }
+    }
+    .aditional-notes {
+        border-radius: 5px;
+        width: auto;
+        box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.2);
+    }
+    .submit {
+        text-align: right;
+    }
+    button {
+        background-color: $navLight;
+        color: #FFF;
+        border: 0;
+        border-radius: 3px;
+        padding: 8px 35px;
+        &:hover {
+            background-color: lighten($color: $navLight, $amount: 10);
+        }
+    }
 }
 form {
     display: grid;
@@ -67,6 +139,9 @@ form {
         height: 200px;
         &::placeholder {
             color: #CCC
+        }
+        &[readonly] {
+            color: #999;
         }
     }
 }
