@@ -3,14 +3,44 @@
         <div class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos hic vero ad possimus aliquid ea. Aperiam inventore alias, voluptates ea nam vero! Quam vel, dolor possimus illum voluptate rerum.</div>
 
         <form>
-            <label for="ciaName">COMPANY NAME</label>
-            <input type="text" name="ciaName" id="ciaName" placeholder="e.g. Your Company Name">
+            <label for="ciaName">COMPANY NAME
+                <span class="error" v-if="!$v.ciaName.required && showError">Field is required</span>
+                <span class="error" v-if="!$v.ciaName.minLength">Name must have at least {{$v.ciaName.$params.minLength.min}} letters.</span>
+            </label>
+            
+            <input
+                @blur="showError = true"
+                v-model="ciaName"
+                type="text"
+                name="ciaName"
+                id="ciaName"
+                placeholder="e.g. Your Company Name"
+                :class="!$v.ciaName.required && showError ? 'error' : ''">
+            
+            <label for="ciaSpend">COMPANY SPEND
+                <span class="error" v-if="!$v.ciaSpend.required && showError">Field is required</span>
+                <span class="error" v-if="!$v.ciaSpend.minValue">Value can't be less than 0.</span>
+            </label>
+            <input
+                @blur="showError = true"
+                v-model="ciaSpend"
+                type="number"
+                name="ciaSpend"
+                id="ciaSpend"
+                placeholder="e.g. $150,000"
+                :class="!$v.ciaSpend.required && showError ? 'error' : ''">
 
-            <label for="ciaName">COMPANY SPEND</label>
-            <input type="text" name="ciaSpend" id="ciaSpend" placeholder="e.g. $150,000">
-
-            <label for="ciaName">COMPANY SPEND ABILITY</label>
-            <input type="text" name="ciaSpenAbility" id="ciaSpenAbility" placeholder="e.g. $150,000 - $300,000">
+            <label for="ciaSpenAbility">COMPANY SPEND ABILITY
+                <span class="error" v-if="!$v.ciaSpenAbility.required && showError">Field is required</span>
+                <span class="error" v-if="!$v.ciaSpenAbility.between">Value must be between $150,000 and $300,000.</span>
+            </label>
+            <input
+                v-model="ciaSpenAbility"
+                type="number"
+                name="ciaSpenAbility"
+                id="ciaSpenAbility"
+                placeholder="e.g. $150,000 - $300,000"
+                :class="!$v.ciaSpenAbility.required && showError ? 'error' : ''">
 
             <label for="ciaName">NOTES</label>
             <textarea @click="showModal = !showModal" v-model="notes" name="ciaName" id="ciaName" placeholder="e.g. Good Tech Company" readonly></textarea>
@@ -32,13 +62,40 @@
 </template>
 
 <script>
+import { required, minLength, between, minValue, numeric } from 'vuelidate/lib/validators'
 export default {
     data() {
         return {
             notes: '',
             aditionalNotes: '',
-            showModal: false
+            showModal: false,
+            ciaName: '',
+            ciaSpend: '',
+            ciaSpenAbility: '',
+            showError: false
         }
+    },
+    methods: {
+        test() {
+            console.log(this.$v.ciaName)
+        }
+    },
+    validations: {
+        ciaName: {
+            required,
+            minLength: minLength(10)
+        },
+        ciaSpend: {
+            required,
+            numeric,
+            minValue: minValue(0),
+        },
+        ciaSpenAbility: {
+            required,
+            numeric,
+            between: between(150000, 300000)
+        }
+
     },
     beforeCreate() {
         document.getElementsByTagName('body')[0].className = 'company-data';
@@ -54,6 +111,24 @@ export default {
     border-radius: 6px;
     padding: 20px;
 }
+input.error {
+    border-color: lightsalmon;
+}
+span.error {
+    font-size: 0.6rem;
+    color: lightsalmon;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
 .info {
     margin-bottom: 20px;
     font-size: 1rem;
