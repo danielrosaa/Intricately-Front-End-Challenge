@@ -40,8 +40,7 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         enforce: 'pre',
         test: /\.(js\vue)$/,
         loader: 'eslint-loader',
@@ -76,8 +75,7 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        oneOf: [
-          {
+        oneOf: [{
             resourceQuery: /^\?vue/,
             use: ['pug-plain-loader']
           },
@@ -108,12 +106,10 @@ module.exports = {
         WEB_APP_URL: JSON.stringify(process.env.WEB_APP_URL),
       }
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images',
-        to: 'assets/images'
-      },
-    ]),
+    new CopyWebpackPlugin([{
+      from: 'src/images',
+      to: 'assets/images'
+    }, ]),
   ]
 };
 

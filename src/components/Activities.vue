@@ -1,6 +1,6 @@
 <template>
     <div class="activity">
-        <div class="date">{{date}}</div>
+        <div class="date">{{date}} days ago</div>
         <div class="icon"><img :src="icon" alt=""></div>
         <div class="text">{{text}}</div>
     </div>

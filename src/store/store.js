@@ -22,14 +22,14 @@ export const store = new Vuex.Store({
             {name: 'Privacy Policy'},
         ],
         activityList: [
-            { id: 1, date: '8 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 2, date: '10 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 3, date: '20 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 4, date: '25 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 5, date: '28 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 6, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 7, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-            { id: 8, date: '35 days ago', icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 1, date: 8, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 2, date: 10, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 3, date: 20, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 4, date: 25, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 5, date: 28, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 6, date: 35, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 7, date: 35, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
+            { id: 8, date: 35, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
         ]
     },
     getters: {
