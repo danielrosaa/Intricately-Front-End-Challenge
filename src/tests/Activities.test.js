@@ -1,54 +1,48 @@
 import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import Vue from 'vue'
 import Vuex from 'vuex'
-import Activities from './../components/Activities.vue';
+import CompanyPage from '@/pages/CompanyPage';
+import Activities from '@/components/Activities'
 
-const wrapper = mount(Activities)
+/** Font Awesome (for warnings purposes) */
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch as faSearchSolid, faAngleDown, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+library.add(faSearchSolid, faAngleDown, faMapMarkerAlt);
+Vue.component('FaIcon', FontAwesomeIcon);
 
-const imgRegex = RegExp(/(\.png|\.gif|\.jpg)/)
-const activityList = [
-    { id: 1, date: 8, icon: '/assets/images/Company Page/content-delivery.png', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-    { id: 2, date: 8, icon: '/assets/images/Company Page/content-delivery.jpg', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' },
-    { id: 3, date: 8, icon: '/assets/images/Company Page/content-delivery.gif', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit' }
-  ]
+Vue.use(Vuex)
 
-const localVue = createLocalVue()
+describe('CompanyPage', () => {
+    const imgRegx = RegExp(/(.gif|.jpg|.png|.svg)\b/)
+    const shallowCompanyPage = shallowMount(CompanyPage)
+    const fullCompanyPage = mount(CompanyPage)
+    const shallowActivities = shallowMount(Activities)
+    const fullActivities = mount(Activities)
 
-localVue.use(Vuex)
 
-describe('Activities', () => {
-
-  let getters
-  let store
-
-  beforeEach(() => {
-    getters = {
-      date: () => 1,
-      iconPNG: () => imgRegex.test(activityList[0].icon),
-      iconJGP: () => imgRegex.test(activityList[1].icon),
-      iconGIF: () => imgRegex.test(activityList[2].icon)
-    }
-
-    store = new Vuex.Store({
-      getters
+    it('is a Vue instance', () => {
+        expect(shallowActivities.isVueInstance()).toBeTruthy()
     })
-    
-  })
 
-  it('is a Vue instance', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
+    it("has prop date of type number", () => {
+        shallowActivities.setProps({
+            date: typeof 8
+        })
+        expect(shallowActivities.vm.date).toBe('number')
+    })
 
-  it('renders the correct markup', () => {
-    expect(wrapper.html()).toContain('<div class="activity">')
-  })
+    it("has prop text of type string", () => {
+        shallowActivities.setProps({
+            date: typeof 8
+        })
+        expect(shallowActivities.vm.date).toBe('number')
+    })
 
-  it("expects Activities' prop data to be a number", () => {
-    expect(typeof getters.date()).toEqual(typeof activityList[0].date)
-  })
-
-  it("expects Activities' prop icon to be a link to an image", () => {
-    expect(getters.iconJPG || getters.iconPNG || getters.iconGIF).toBeTruthy()
-  })
-
-
+    it("has a part of a link in prop icon", () => {
+        shallowActivities.setProps({
+            icon: '/assets/images/Company Page/content-delivery.png'
+        })
+        expect(imgRegx.test(shallowActivities.vm.icon)).toBeTruthy()
+    })
 })
