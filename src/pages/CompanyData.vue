@@ -42,8 +42,8 @@
                 placeholder="e.g. $150,000 - $300,000"
                 :class="!$v.ciaSpenAbility.required && showError ? 'error' : ''">
 
-            <label for="ciaName">NOTES</label>
-            <textarea @click="showModal = !showModal" v-model="notes" name="ciaName" id="ciaName" placeholder="e.g. Good Tech Company" readonly></textarea>
+            <label for="notes">NOTES</label>
+            <textarea @click="showModal = !showModal" v-model="notes" name="notes" id="notes" placeholder="e.g. Good Tech Company" readonly></textarea>
             <div v-if="showModal" class="modal">
                 <div class="modal-box">
                     <div class="modal-title">
@@ -75,11 +75,6 @@ export default {
             showError: false
         }
     },
-    methods: {
-        test() {
-            console.log(this.$v.ciaName)
-        }
-    },
     validations: {
         ciaName: {
             required,
@@ -98,8 +93,8 @@ export default {
 
     },
     beforeCreate() {
-        document.getElementsByTagName('body')[0].className = 'company-data';
-        document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
+        // document.getElementsByTagName('body')[0].className = 'company-data';
+        // document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
     }
 }
 </script>
