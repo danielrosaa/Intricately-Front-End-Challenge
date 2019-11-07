@@ -3,14 +3,6 @@ import Vue from 'vue'
 import Vuelidate from 'vuelidate';
 import CompanyData from '@/pages/CompanyData';
 
-/** Font Awesome (to remove warnings of <fa-icon>) */
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faSearch as faSearchSolid, faAngleDown, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-// library.add(faSearchSolid, faAngleDown, faMapMarkerAlt);
-// Vue.component('FaIcon', FontAwesomeIcon);
-//////
-
 Vue.use(Vuelidate)
 
 describe('CompanyData testings', () => {
@@ -25,16 +17,14 @@ describe('CompanyData testings', () => {
         expect(wrapper.vm.$v.$invalid).toBeFalsy()
     })
 
-    xit('checks if error classes are added in inputs', () => {
+    it('checks if error classes are added in inputs', () => {
         const wrapper = mount(CompanyData)
         wrapper.setData({
             ciaName: '',
             ciaSpend: '111',
-            ciaSpenAbility: '152-153'
+            ciaSpenAbility: '152-153',
+            showError: true
         })
-        const input = wrapper.find('span')
-        console.log('input', input)
-        // expect(wrapper.vm.$v.$invalid).toBeFalsy()
-        expect(wrapper.find('.error')).toBeTruthy()
+        expect(wrapper.find('#ciaName').classes()).toContain('error')
     })
 })
