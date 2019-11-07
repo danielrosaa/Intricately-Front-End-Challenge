@@ -122,8 +122,7 @@ export default {
 
     },
     beforeCreate() {
-        // document.getElementsByTagName('body')[0].className = 'company-data';
-        // document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
+        document.body.className = 'company-data'
     }
 }
 </script>

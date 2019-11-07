@@ -48,8 +48,7 @@ export default {
         ...mapGetters(['activityList'])
     },
     beforeCreate() {
-        document.getElementsByTagName('body')[0].className = 'company-page';
-        document.getElementsByTagName('footer')[0].className = 'company-page footer-bg';
+        document.body.className = 'company-page'
     }
 }
 </script>

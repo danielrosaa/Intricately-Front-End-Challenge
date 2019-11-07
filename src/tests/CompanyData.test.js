@@ -8,7 +8,7 @@ Vue.use(Vuelidate)
 describe('CompanyData testings', () => {
 
     it('checks if inputs have correct values', () => {
-        const wrapper = mount(CompanyData)
+        const wrapper = shallowMount(CompanyData)
         wrapper.setData({
             ciaName: 'Company Data',
             ciaSpend: '150',
@@ -18,7 +18,7 @@ describe('CompanyData testings', () => {
     })
 
     it('checks if error classes are added in inputs', () => {
-        const wrapper = mount(CompanyData)
+        const wrapper = shallowMount(CompanyData)
         wrapper.setData({
             ciaName: '',
             ciaSpend: '111',

@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer :class="this.$route.path !== '/companypage' ? 'bg-companyData' : ''">
       <div class="footer-content">
         <div class="row">
           <ul>
@@ -32,3 +32,14 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+
+.bg-companyData {
+  background-color: #F3F3f3;
+}
+.bg-companyPage {
+  background-color: #FFF;
+}
+
+</style>
