@@ -4,6 +4,7 @@ import Vuelidate from 'vuelidate';
 import router from 'Router/index';
 import { store } from 'Store/store';
 import Home from 'Pages/Home.vue';
+import VueCurrencyFilter from 'vue-currency-filter'
 
 /** Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -21,6 +22,17 @@ import Footer from 'Components/Footer.vue';
 Vue.component('appFooter', Footer);
 
 Vue.use(Vuelidate)
+Vue.use(VueCurrencyFilter,
+  {
+    symbol : '$',
+    thousandsSeparator: ',',
+    fractionCount: 2,
+    fractionSeparator: '.',
+    symbolPosition: 'front',
+    symbolSpacing: true
+  })
+Vue.prototype.$filters = Vue.options.filters
+
 new Vue({
   render: createElement => createElement(Home),
   el: '#app',

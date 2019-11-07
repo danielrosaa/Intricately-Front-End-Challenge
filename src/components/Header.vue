@@ -57,6 +57,6 @@ input[type='text']::placeholder {
 }
 .icon {
   position: relative;
-  left: -180px;
+  left: -170px;
 }
 </style>

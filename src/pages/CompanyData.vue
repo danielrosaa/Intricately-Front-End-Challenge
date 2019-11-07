@@ -19,24 +19,24 @@
             
             <label for="ciaSpend">COMPANY SPEND
                 <span class="error" v-if="!$v.ciaSpend.required && showError">Field is required</span>
-                <span class="error" v-if="!$v.ciaSpend.minValue">Value can't be less than 0.</span>
             </label>
             <input
-                @blur="showError = true"
+                @blur="showError = true, formatInputSpend()"
+                @focus="showError = false"
                 v-model="ciaSpend"
-                type="number"
+                type="text"
                 name="ciaSpend"
                 id="ciaSpend"
                 placeholder="e.g. $150,000"
                 :class="!$v.ciaSpend.required && showError ? 'error' : ''">
-
             <label for="ciaSpenAbility">COMPANY SPEND ABILITY
                 <span class="error" v-if="!$v.ciaSpenAbility.required && showError">Field is required</span>
-                <span class="error" v-if="!$v.ciaSpenAbility.between">Value must be between $150,000 and $300,000.</span>
+                <span class="error" v-if="checkSpendAbility">First value needs to be smaller than the second</span>
             </label>
             <input
+                @blur="formatInputSpendAbility()"
                 v-model="ciaSpenAbility"
-                type="number"
+                type="text"
                 name="ciaSpenAbility"
                 id="ciaSpenAbility"
                 placeholder="e.g. $150,000 - $300,000"
@@ -72,13 +72,40 @@ export default {
             ciaName: '',
             ciaSpend: '',
             ciaSpenAbility: '',
-            showError: false
+            showError: false,
+            checkSpendAbility: false
+        }
+    },
+    watch: {
+        ciaSpend() {
+            let regex = RegExp(/^\d+$/)
+            if (!regex.test(this.ciaSpend) && !this.showError) {
+                this.ciaSpend = ''
+            }
+        },
+        ciaSpenAbility() {
+            let regex = RegExp(/[0-9]|-|([0-9])/g)
+            if (!regex.test(this.ciaSpenAbility)) {
+                this.ciaSpenAbility = ''
+            }
         }
     },
     methods: {
-        test() {
-            console.log(this.$v.ciaName)
+        formatInputSpend() {
+            this.ciaSpend = this.$filters.currency(this.ciaSpend)
+        },
+        formatInputSpendAbility() {
+            let minSpend = parseInt(this.ciaSpenAbility.split('-')[0])
+            let maxSpend = parseInt(this.ciaSpenAbility.split('-')[1])
+            if ((minSpend > maxSpend) || (maxSpend < minSpend)) {
+                this.checkSpendAbility = true
+            }
+            if ((minSpend < maxSpend) && (maxSpend > minSpend)) {
+                this.checkSpendAbility = false
+                this.ciaSpenAbility = this.$filters.currency(minSpend) + ' - ' + this.$filters.currency(maxSpend)
+            }
         }
+    
     },
     validations: {
         ciaName: {
@@ -86,14 +113,10 @@ export default {
             minLength: minLength(10)
         },
         ciaSpend: {
-            required,
-            numeric,
-            minValue: minValue(0),
+            required
         },
         ciaSpenAbility: {
-            required,
-            numeric,
-            between: between(150000, 300000)
+            required
         }
 
     },
