@@ -13,11 +13,6 @@ export default {
         'icon',
         'text'
     ]
-    // props: {
-    //     date: number,
-    //     icon: String,
-    //     text: String
-    // }
 }
 </script>
 <style lang="scss" scoped>

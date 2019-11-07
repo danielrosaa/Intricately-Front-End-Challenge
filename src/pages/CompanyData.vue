@@ -4,12 +4,12 @@
 
         <form>
             <label for="ciaName">COMPANY NAME
-                <span class="error" v-if="!$v.ciaName.required && showError">Field is required</span>
+                <span class="error" v-if="!$v.ciaName.required && showNameError">Field is required</span>
                 <span class="error" v-if="!$v.ciaName.minLength">Name must have at least {{$v.ciaName.$params.minLength.min}} letters.</span>
             </label>
             
             <input
-                @blur="showError = true"
+                @blur="showNameError = true"
                 v-model="ciaName"
                 type="text"
                 name="ciaName"
@@ -42,8 +42,8 @@
                 placeholder="e.g. $150,000 - $300,000"
                 :class="!$v.ciaSpenAbility.required && showError ? 'error' : ''">
 
-            <label for="ciaName">NOTES</label>
-            <textarea @click="showModal = !showModal" v-model="notes" name="ciaName" id="ciaName" placeholder="e.g. Good Tech Company" readonly></textarea>
+            <label for="notes">NOTES</label>
+            <textarea @click="showModal = !showModal" v-model="notes" name="notes" id="notes" placeholder="e.g. Good Tech Company" readonly></textarea>
             <div v-if="showModal" class="modal">
                 <div class="modal-box">
                     <div class="modal-title">
@@ -73,6 +73,7 @@ export default {
             ciaSpend: '',
             ciaSpenAbility: '',
             showError: false,
+            showNameError: false,
             checkSpendAbility: false
         }
     },
@@ -121,8 +122,8 @@ export default {
 
     },
     beforeCreate() {
-        document.getElementsByTagName('body')[0].className = 'company-data';
-        document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
+        // document.getElementsByTagName('body')[0].className = 'company-data';
+        // document.getElementsByTagName('footer')[0].className = 'company-data footer-bg';
     }
 }
 </script>
